@@ -11,6 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: microsoft/setup-msbuild@v2
+      - name: Restore packages
+        run: nuget restore softcam.sln
       - name: Build
         run: msbuild /m /p:Configuration=Release /p:Platform=${{ matrix.platform }} softcam.sln
       - name: Collect
